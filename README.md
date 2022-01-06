@@ -2,10 +2,10 @@
 ### Project: MICROBLOGGING SERVICE-TWITTER
 ##### CLASS PROJECT -GROUP -FALL 2021 -WEB BACK-END ENGINEERING
 --------------------------------------------------------
-### GOAL (PURPOSE):
- The scope of this project includes developing RESTful back-end services and preparing them for production deployment.
-Our RESTful back-end services include userprofile, post-timeline, postlike, pollservice, and serviceregistry.
-A second aim for this project is to address issues of scalability due to the traffic with asynchorous processes.
+#### GOAL (PURPOSE)
+* The scope of this project includes developing RESTful back-end services and preparing them for production deployment.
+* Our RESTful back-end services include userprofile, post-timeline, postlike, pollservice, and serviceregistry.
+* The second aim for this project is to address issues of scalability due to the traffic with asynchorous processes.
 ------------------------------------------------
 #### Project Detail
 To create RESTful backend services, we used the HUG framework, where JSON was used as a format for all inputs and outputs.
@@ -152,11 +152,9 @@ This file is a worker file that check the post has polllink reference, if so, is
 
 --------------------------------------------------------------------
 #### Project details - likesworker.py
-
-This file is a worker file that check the like for invalid post or not
+  This file is a worker file that check the like for invalid post or not.
 -------------------------------------------------------------------
 #### How to test an example run for this project:
-
 1. ##### for dynamodb database setup..
    1) Open new terminal- open the folder where dynamodb downladed.
       Note: we use "US West (Oregon) Region" dynamodb version
@@ -207,16 +205,16 @@ After creating database run the application using same terminal for following co
  -------------------------------------------------------------------
 4. ##### userprofile service testing..
    1. To check all users open browser, we have used firefox
-
-      http://localhost:5100/users/
+ 
+              http://localhost:5100/users/
 
    2.  If user is checking a userprofile, open browser
-
-      command: http://localhost:5100/users/username
+ 
+              http://localhost:5100/users/username
 
       provide username, example:
 
-      http://localhost:5100/users/falgun12
+              http://localhost:5100/users/falgun12
 
    3. To create new user, open a new command-line terminal
       example:
@@ -228,110 +226,117 @@ After creating database run the application using same terminal for following co
 
       example1:
 
-         http POST localhost:5100/follow/ username=falgun12 friendprofilename=salin followdate=10/21/2021
+              http POST localhost:5100/follow/ username=falgun12 friendprofilename=salin followdate=10/21/2021
 
       example2:
 
-      http POST localhost:5100/follow/ username=donal34 friendprofilename=salin followdate=10/21/2021
+              http POST localhost:5100/follow/ username=donal34 friendprofilename=salin followdate=10/21/2021
 
       example3:
 
-      http POST localhost:5100/follow/ username=rohit friendprofilename=falgun12 followdate=10/21/2021
+              http POST localhost:5100/follow/ username=rohit friendprofilename=falgun12 followdate=10/21/2021
 
       example4:
 
-      http POST localhost:5100/follow/ username=falgun12 friendprofilename=donal34 followdate=10/21/2021
+             http POST localhost:5100/follow/ username=falgun12 friendprofilename=donal34 followdate=10/21/2021
 
    5. To check the list of users followed by user, open a browser
 
-      example: http://localhost:5100/following/falgun12
+      example:
+      
+               http://localhost:5100/following/falgun12
 
    6. To see the list of user's friends who follow users, open a browser
 
-      example: http://localhost:5100/yourfollowers/salin
+      example: 
+      
+               http://localhost:5100/yourfollowers/salin
 
 --------------------------------------------------------------------
 5. ##### post-timeline service testing..  (use Firefox browser)
 
    1. To check the publictimeline, open a browser
 
-      http://localhost:5200/publictimeline/
+            http://localhost:5200/publictimeline/
 
       If want to run in command line terminal,
 
-      http GET localhost:5200/publictimeline/
+            http GET localhost:5200/publictimeline/
 
    2. To check the usertimeline, open a browser
 
-      http://localhost:5202/usertimeline/falgun12
+            http://localhost:5202/usertimeline/falgun12
 
       The login page will get open, provide the username as falgun12 and password as falgun1234
       The command to run in terminal:
 
-      http --auth falgun12:falgun1234 GET localhost:5201/usertimeline/falgun12
+            http --auth falgun12:falgun1234 GET localhost:5201/usertimeline/falgun12
 
    3. To check the hometimeline, open a terminal
       Run a following command to get following friend's list from userprofile
 
-      friends=$(http GET localhost:5100/following/falgun12)
+            friends=$(http GET localhost:5100/following/falgun12)
 
       Now, call the hometimeline. with that friends list:
 
-      http --auth falgun12:falgun1234 POST localhost:5201/hometimeline/ username=falgun12 friends="$friends"
+            http --auth falgun12:falgun1234 POST localhost:5201/hometimeline/ username=falgun12 friends="$friends"
 
    4. To create a new post, open a terminal
       Run a command:
 
-      http --auth falgun12:falgun1234 POST localhost:5202/createpost/ username=falgun12 post="hi, falgun again" posttimestamp="12/3/2021, 8:00"
+            http --auth falgun12:falgun1234 POST localhost:5202/createpost/ username=falgun12 post="hi, falgun again" posttimestamp="12/3/2021, 8:00"
 
    5. To repost a post, open a terminal
       Run a command:
 
-      http --auth falgun12:falgun1234 POST localhost:5202/repost/ username=falgun12 actualpostid=8 repost="hi, this is falgun again" posttimestamp="12/3/2021, 9:00"
+            http --auth falgun12:falgun1234 POST localhost:5202/repost/ username=falgun12 actualpostid=8 repost="hi, this is falgun again" posttimestamp="12/3/2021, 9:00"
 
    6. To create a post , asynchronously
-      http --auth falgun12:falgun1234 POST localhost:5202/addpostasync/ username=falgun12 post="hi, falgun again from async" posttimestamp="12/3/2021, 8:00"
+   7. 
+            http --auth falgun12:falgun1234 POST localhost:5202/addpostasync/ username=falgun12 post="hi, falgun again from async" posttimestamp="12/3/2021, 8:00"
 
 --------------------------------------------------------------------
 6. ##### postlike service testing...
    1. To like a post, open a terminal
       Run a command:
 
-      http POST localhost:5300/newlikes/ postid=1 username=riya postauthor=falgun12
+             http POST localhost:5300/newlikes/ postid=1 username=riya postauthor=falgun12
       
    2. To check how many likes a post received, open a terminal
       Run a command:
 
-      http://localhost:5300/postlike/1
+            http://localhost:5300/postlike/1
    
    3. To check list of posts that users liked, open a terminal
       Run a command:
 
-      http://localhost:5300/postlist/falgun12
+            http://localhost:5300/postlist/falgun12
    
    4. To check popular posts, open a terminal
       Run a command:
 
-      http://localhost:5300/popularposts
+            http://localhost:5300/popularposts
 
 --------------------------------------------------------------------
 7. ##### pollservice service testing..
    NOTE: SHOULD BE DYNAMODB RUNNING ON 8000 port TO RUN FOLLOWING COMMANDS
    1. Create a poll -with one question and four options
       Run a command in terminal:
-      http POST localhost:5400/newpoll/ username=falgun12 question="What is your favorite color?" option1=red option2=yellow option3=black option4=white timestamp="11/26/2021 19:51"
+      
+              http POST localhost:5400/newpoll/ username=falgun12 question="What is your favorite color?" option1=red option2=yellow option3=black option4=white timestamp="11/26/2021 19:51"
       
    2. Participate in poll- give your response to poll
       Run a command in terminal:
-      http POST localhost:5400/pollpart/ username=donal34 pollid=1 selectedoption=yellow
+      
+           http POST localhost:5400/pollpart/ username=donal34 pollid=1 selectedoption=yellow
 
-      http POST localhost:5400/pollpart/ username=salin pollid=1 selectedoption=black
+           http POST localhost:5400/pollpart/ username=salin pollid=1 selectedoption=black
       
 
    3. To see poll result 
       Run in browser:
       
-         http://localhost:5400/pollresult/1
+           http://localhost:5400/pollresult/1
 
 8. ##### Service Registry -----
 Service Registry have three routes and one startup function
@@ -357,10 +362,11 @@ Service Registry have three routes and one startup function
 
    4. Restart the haproxy service
    5.Now run all above endpoints of userprofie and timeline service with
-   localhost:80/ endpoints...
+             localhost:80/ endpoints...
    as specified places(browser or terminal)
    6. also Check the stat in browser:
-      with http://localhost:80/haproxy?stats
+      with 
+             http://localhost:80/haproxy?stats
 
 
 10. ##### Additional asynchronous endpoint testing..
@@ -369,17 +375,20 @@ Service Registry have three routes and one startup function
 11. ##### Hey testing ------
    hey testing with authentication for synchronous(createpost) and asynchronous(addpostasync) endpoints of timeline
 
-   **** NOTE: DUE TO SERVICEREGISTRY SETTING, FIRST  TIME FOLLOWING COMMAND RUN WILL THROUGH 502 STATUS ERROR DUE TO UNREGISTERED USERPROFILE INSTANCE
+   NOTE: DUE TO SERVICEREGISTRY SETTING, FIRST  TIME FOLLOWING COMMAND RUN WILL THROUGH 502 STATUS ERROR DUE TO UNREGISTERED USERPROFILE INSTANCE
             RUN THE http://localhost:5100/users/   t register the userprofile
             and than run following commands
    For synchronous (createpost) command:
-   hey -n 10 -c 10 -H "Authorization: Basic $(echo -n salin:salin1234 | base64)" -H "Content-Type: application/json" -m POST -d '{"username":"salin","post":"this is syn testing","posttimestamp":"12/3333"}' http://127.0.0.1:5200/createpost/
+   
+               hey -n 10 -c 10 -H "Authorization: Basic $(echo -n salin:salin1234 | base64)" -H "Content-Type: application/json" -m POST -d '{"username":"salin","post":"this is syn testing","posttimestamp":"12/3333"}' http://127.0.0.1:5200/createpost/
 
    For asynchronous (addpostasync) endpoint command:
-   hey -n 10 -c 10 -H "Authorization: Basic $(echo -n donal34:donal1234 | base64)" -H "Content-Type: application/json" -m POST -d '{"username":"donal34","post":"this is donal asyn from hey","posttimestamp":"12/17/2021 14:55"}' http://127.0.0.1:5200/addpostasync/ 
+   
+               hey -n 10 -c 10 -H "Authorization: Basic $(echo -n donal34:donal1234 | base64)" -H "Content-Type: application/json" -m POST -d '{"username":"donal34","post":"this is donal asyn from hey","posttimestamp":"12/17/2021 14:55"}' http://127.0.0.1:5200/addpostasync/ 
 
    For asynchronous (addpostasync) endpoint to check the pollworker task for validation of poll url in post command:
-   hey -n 10 -c 10 -H "Authorization: Basic $(echo -n donal34:donal1234 | base64)" -H "Content-Type: application/json" -m POST -d '{"username":"donal34","post":"this is url http://localhost:5300/pollresult/120","posttimestamp":"12/17/2021 14:55"}' http://127.0.0.1:5200/addpostasync/ 
+   
+               hey -n 10 -c 10 -H "Authorization: Basic $(echo -n donal34:donal1234 | base64)" -H "Content-Type: application/json" -m POST -d '{"username":"donal34","post":"this is url http://localhost:5300/pollresult/120","posttimestamp":"12/17/2021 14:55"}' http://127.0.0.1:5200/addpostasync/ 
    
    ###### HEY result ---
  We have captured the results and store in impact.pdf file 
@@ -388,9 +397,11 @@ Service Registry have three routes and one startup function
       1. Likeworker addded for validation of the post
       Test: 
       run this command in the terminal and see the emailnotifyworker prints  the email details in foreman window
-            http POST localhost:5300/newlikes/ postid=120 username=riya postauthor=falgun12
+      
+               http POST localhost:5300/newlikes/ postid=120 username=riya postauthor=falgun12
 
       run this command in the terminal and see the emailnotifyworker prints the email details in foreman window
+      
                http --auth falgun12:falgun1234 POST localhost:5202/addpostasync/ username=falgun12 post="this is url http://localhost:5300/pollresult/124" posttimestamp="12/3/2021, 8:00"
 
       2. pollworker added for validation of poll link in post-timeline
