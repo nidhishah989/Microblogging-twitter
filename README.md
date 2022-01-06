@@ -409,6 +409,6 @@ Service Registry have three routes and one startup function
 
 ---------------------------------------------------------
 ##### Student INFORMATION -FALL 2021 -WEB BACK-END ENGINEERING
-Nidhi Shah
-Priyanka Kadam 
-Robert Nguyen
+* Nidhi Shah (Project lead)
+* Priyanka Kadam 
+* Robert Nguyen
